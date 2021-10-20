@@ -10,15 +10,18 @@ describe('Users', () => {
       .send({
         name: 'John Doe',
         username: 'johndoe'
-      })
+      });
     expect(201);
 
-    expect(validate(response.body.id)).toBe(true);
+    expect(validate(response.body.message.id)).toBe(true);
 
     expect(response.body).toMatchObject({
-      name: 'John Doe',
-      username: 'johndoe',
-      todos: []
+      success: true,
+      message: {
+        name: 'John Doe',
+        username: 'johndoe',
+        todos: []
+      }
     });
   });
 
